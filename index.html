@@ -9,24 +9,55 @@
 </head>
 
 <body>
-    <div class="sticky top-0 w-full h-20 m-0 flex bg-gray-800 text-white shadow-2xl justify-around items-center">
-        <h1 class="text-4xl">Character Counter</h1>
+    <!-- Navbar -->
+    <div
+        class="sticky top-0 w-full h-16 lg:h-20 flex bg-gray-800 text-white shadow-2xl justify-center lg:justify-around items-center">
+        <h1 class="text-2xl lg:text-4xl">Character Counter</h1>
     </div>
 
-    <div class="w-full h-screen bg-gray-200 text-black flex flex-col gap-10 justify-start p-36 items-center ">
-        <div class="flex flex-row gap-5 justify-center">
-            <h3 class="text-xl font-semibold font-mono">Set your character limit</h3>
-            <input class="border rounded-md py-1 px-2 w-32" id="userLimit" type="number" placeholder="Max Limit">
+    <!-- Main Section -->
+    <div
+        class="w-full min-h-screen bg-gray-200 text-black flex flex-col gap-6 lg:gap-10 justify-start p-6 lg:p-36 items-center">
+
+        <!-- Input Section -->
+        <div class="flex flex-col lg:flex-row gap-4 lg:gap-5 justify-center items-center">
+            <h3 class="text-lg lg:text-xl font-semibold font-mono text-center">
+                Set your character limit
+            </h3>
+
+            <input class="border rounded-md py-1 px-2 w-40 lg:w-32" id="userLimit" type="number"
+                placeholder="Max Limit">
+
+            <button type="reset" id="reset"
+                class="text-white bg-gray-800 border hover:bg-gray-700 hover:border-gray-900 cursor-pointer shadow-xs font-medium leading-5 rounded-lg text-sm px-4 py-2.5">
+                Reset
+            </button>
         </div>
 
-        <textarea class="h-70 w-2xl bg-white rounded-md p-3 border-2" name="text" id="textInput"
-            maxlength="200"></textarea>
-        <p class="text-xl font-semibold font-mono" id="output">Characters remaining: 200 / 200</p>
+        <!-- Textarea -->
+        <textarea class="h-48 lg:h-70 w-sm md:w-lg lg:w-2xl bg-white rounded-md p-3 border-2 text-lg lg:text-xl" name="text"
+            id="textInput" maxlength="200">
+    </textarea>
+
+        <p class="text-lg lg:text-xl font-semibold font-mono text-center" id="output">
+            Characters remaining: 200 / 200
+        </p>
+
+        <p class="hidden text-lg lg:text-xl font-semibold font-mono text-red-700" id="warning">
+            Max limit reached.
+        </p>
+
     </div>
+
+    <!-- sdfsdfsdf -->
+
+
     <script>
         var textInput = document.getElementById("textInput");
         var output = document.getElementById("output");
         var userLimit = document.getElementById("userLimit");
+        var warning = document.getElementById("warning");
+        var reset = document.getElementById("reset");
 
         var maxCount = 200; // default char limit
         textInput.setAttribute("maxlength", maxCount);
@@ -46,16 +77,24 @@
         //Character remaining
         textInput.addEventListener("keyup", function () {
             var textCount = textInput.value.length;
+            (textCount == maxCount) ? warning.classList.remove("hidden") : warning.classList.add("hidden");
 
-            if (textCount == maxCount) {
-                alert(`Warning:  We caught you! \n Max limit reached.`);
-            }
-            
             if ((maxCount - textCount) < 0) {
-                output.textContent = "Characters remaining: " + (maxCount - textCount) + " / " + maxCount+"\nDelete the extra characters above your specified limit";
-            }else{
+                output.innerHTML = "Characters remaining: " + (maxCount - textCount) + " / " + maxCount + "<span class=\"text-red-700\">\nDelete the extra characters</span>";
+            } else {
                 output.textContent = "Characters remaining: " + (maxCount - textCount) + " / " + maxCount;
             }
+        })
+
+        //Reset everything
+        reset.addEventListener("click", function () {
+            textInput.value = "";
+            userLimit.value = "";
+            maxCount = 200;
+            textCount = textInput.value.length;
+            (textCount == maxCount) ? warning.classList.remove("hidden") : warning.classList.add("hidden");
+            output.textContent = "Characters remaining: " + maxCount + " / " + maxCount;
+            textInput.setAttribute("maxlength", maxCount);
         })
 
 

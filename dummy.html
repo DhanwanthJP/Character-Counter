@@ -1,0 +1,27 @@
+
+
+
+
+
+
+
+
+
+
+<div class="sticky top-0 w-full h-20 m-0 flex bg-gray-800 text-white shadow-2xl justify-around items-center">
+        <h1 class="text-4xl text-center">Character Counter</h1>
+    </div>
+
+    <div class="w-full h-screen bg-gray-200 text-black flex flex-col gap-10 justify-start p-36 md:p-20 sm:p-8 items-center ">
+        <div class="flex flex-row gap-5 justify-center">
+            <h3 class="text-xl font-semibold font-mono">Set your character limit</h3>
+            <input class="border rounded-md py-1 px-2 w-32" id="userLimit" type="number" placeholder="Max Limit">
+            <button type="reset" id="reset"
+                class="text-white bg-gray-800 border hover:bg-gray-700 hover:border-gray-900 cursor-pointer shadow-xs font-medium leading-5 rounded-lg text-sm px-4 py-2.5 focus:outline-none">Reset</button>
+        </div>
+
+        <textarea class="h-70 w-2xl bg-white rounded-md p-3 border-2 text-xl" name="text" id="textInput"
+            maxlength="200"></textarea>
+        <p class="text-xl font-semibold font-mono" id="output">Characters remaining: 200 / 200</p>
+        <p class="hidden text-xl font-semibold font-mono text-red-700" id="warning">Max limit reached.</p>
+    </div>
