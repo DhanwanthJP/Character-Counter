@@ -49,9 +49,6 @@
 
     </div>
 
-    <!-- sdfsdfsdf -->
-
-
     <script>
         var textInput = document.getElementById("textInput");
         var output = document.getElementById("output");
@@ -67,7 +64,7 @@
             if (userLimit.value === "") {
                 maxCount = 200; // default
             } else {
-                maxCount = Number(userLimit.value);
+                maxCount = Math.floor(Number(userLimit.value));
             }
 
             textInput.setAttribute("maxlength", maxCount);
@@ -101,4 +98,4 @@
     </script>
 </body>
 
-</html>
+</html> 
