@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <!-- Navbar -->
+    <!-- Header -->
     <div
         class="sticky top-0 w-full h-16 lg:h-20 flex bg-gray-800 text-white shadow-2xl justify-center lg:justify-around items-center">
         <h1 class="text-2xl lg:text-4xl">Character Counter</h1>
@@ -29,13 +29,13 @@
                 placeholder="Max Limit">
 
             <button type="reset" id="reset"
-                class="text-white bg-gray-800 border hover:bg-gray-700 hover:border-gray-900 cursor-pointer shadow-xs font-medium leading-5 rounded-lg text-sm px-4 py-2.5">
+                class="text-white text-lg bg-gray-800 border hover:bg-gray-700 hover:border-gray-900 cursor-pointer shadow-xs font-medium leading-5 rounded-lg px-4 py-2.5">
                 Reset
             </button>
         </div>
 
         <!-- Textarea -->
-        <textarea class="h-48 lg:h-70 w-sm md:w-lg lg:w-2xl bg-white rounded-md p-3 border-2 text-lg lg:text-xl" name="text"
+        <textarea class="h-48 lg:h-70 w-sm md:w-lg lg:w-2xl bg-white rounded-md p-3 border-2 text-lg lg:text-xl  focus-visible:border-amber-800 focus:outline-none" name="text"
             id="textInput" maxlength="200">
     </textarea>
 
